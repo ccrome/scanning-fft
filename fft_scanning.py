@@ -27,12 +27,13 @@ def fft_scanning(fs, data, fft_bins=8192, window='hanning'):
     w = w[np.newaxis, :, np.newaxis]
     data = data * w
     fft_data = rfft(data, axis=1)
+    fft_data = fft_data / data.shape[0]
     assert(fft_data.shape[0] == data.shape[0])
     assert(fft_data.shape[2] == data.shape[2])
     assert(fft_data.shape[1] == fft_bins)
     # Sum up over the blocks axis
     fft_data = np.abs(fft_data)
-    result = np.mean(fft_data, axis=0)
+    result = np.mean(fft_data, axis=0)/fft_data.shape[0]
     assert(result.shape[0] == fft_bins)
     assert(result.shape[1] == data.shape[2])
     freqs = rfftfreq(blocksize, d=1.0/fs)
