@@ -91,4 +91,4 @@ def update_output(list_of_contents, fft_bins, list_of_fn):
 
 
 if __name__ == '__main__':
-    app.run_server(debug=True)
+    app.run_server(debug=True, host="0.0.0.0")
