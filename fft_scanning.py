@@ -3,7 +3,7 @@ import numpy as np
 from numpy.fft import rfft, rfftfreq
 from scipy.signal import get_window
 
-def fft_scanning(fs, data, fft_bins=8192, window='hanning'):
+def fft_scanning(fs, data, fft_bins=8192, window='hann'):
     """Perform a scanning FFT on data.
     parameters:
         fs      :  sample rate
